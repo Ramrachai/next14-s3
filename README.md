@@ -16,3 +16,4 @@ NEXT_AWS_S3_BUCKET_NAME=""
 - npm run dev 
 
 ## Screenshot 
+![image](https://github.com/Ramrachai/next14-s3/assets/47687976/c26d6b2c-3177-4b5f-8620-815bec996af5)
