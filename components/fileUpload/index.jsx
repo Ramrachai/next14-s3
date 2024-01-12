@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { success, failed } from "@/redux/features/uploadSlice"
 
 
-const index = () => {
+const Index = () => {
     const initialState = {
         message: null
     }
@@ -35,4 +35,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index
