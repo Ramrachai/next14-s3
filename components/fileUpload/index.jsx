@@ -1,10 +1,9 @@
 "use client"
-
 import React, {useRef} from 'react'
 import { useFormState } from 'react-dom'
 import { uploadFile } from './upload.action'
 import SubmitBtn from './SubmitBtn'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { success, failed } from "@/redux/features/uploadSlice"
 
 
