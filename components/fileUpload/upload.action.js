@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import sharp from "sharp"
 
 const s3Client = new S3Client({
     region: process.env.NEXT_AWS_S3_REGION,
@@ -11,7 +12,14 @@ const s3Client = new S3Client({
     },
 })
 
-async function uploadFiletoS3(fileBuffer, fileName) {
+async function uploadFiletoS3(file, fileName) {
+    const fileBuffer = await sharp(file)
+                        .jpeg({quality: 60})
+                        .resize(300, 300, {
+                            fit: "cover", 
+                            kernel: sharp.kernel.nearest 
+                        })
+                        .toBuffer()
     const params= {
         Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME,
         Body: fileBuffer,
@@ -29,8 +37,8 @@ export async function uploadFile(prevState, formData) {
         if(file.size === 0) {
             return { status: "error", message: "Please select a file to upload" }
         }
-        if(file.size >= 100000) {
-            return  { status: "error", message: "Upload less than 100KB" }
+        if(file.size >= 5000000) {
+            return  { status: "error", message: "Upload less than 5 Megabyte" }
         }
         if (file.type != "image/jpeg") {
             return  { status: "error", message: "Only jpg/jpeg images are allowed" }
