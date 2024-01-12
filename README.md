@@ -5,10 +5,10 @@ This is an file UPLOAD-DOWNLOAD application using next.js 14, server action, ama
 
 
 ### .env.local file sample: 
-NEXT_AWS_S3_REGION=""
-NEXT_AWS_S3_ACCESS_KEY_ID=""
-NEXT_AWS_S3_SECRET_ACCESS_KEY=""
-NEXT_AWS_S3_BUCKET_NAME=""
+NEXT_AWS_S3_REGION=""  
+NEXT_AWS_S3_ACCESS_KEY_ID=""  
+NEXT_AWS_S3_SECRET_ACCESS_KEY=""  
+NEXT_AWS_S3_BUCKET_NAME=""  
 
 
 ## installation: 
