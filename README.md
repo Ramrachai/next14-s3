@@ -1,7 +1,7 @@
 # Live Link: [https://download-woad-one.vercel.app/]
 
 ## About the App: 
-This is an file UPLOAD-DOWNLOAD application using next.js 14, server action, amazon s3 and Redux. When we click on Upload button,image will be uploaded to amazon s3 bucket using (server action + aws-sdk/client-s3) and upload state is updated using REDUX. if successful then image gallery component is re-rendered to show all the uploaded photos. Then if we click on the image - it will be again downloaded to your PC.
+This is an file UPLOAD-DOWNLOAD application using next.js 14, server action, amazon s3 and Redux. When we click on Upload button,image will be resized to 300x300px then  uploaded to amazon s3 bucket using (server action + aws-sdk/client-s3) and upload state is updated using REDUX. if successful then image gallery component is re-rendered to show all the uploaded photos. Then if we click on the image - it will be again downloaded to your PC.
 
 
 ### .env.local file sample: 
