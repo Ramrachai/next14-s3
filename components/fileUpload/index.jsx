@@ -25,9 +25,9 @@ const Index = () => {
     }
 
     return (
-        <form className='p-6 w-[400px] mx-auto' action={formAction} ref={formRef}>
+        <form className='p-6 max-w-[400px] mx-auto' action={formAction} ref={formRef}>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="multiple_files">Upload Image files</label>
-            <input accept='image/jpeg' className="block w-full text-sm text-gray-900 border rounded border-gray-300  cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file"  name='file'/>
+            <input accept='image/jpeg' className=" block w-full text-sm text-gray-900 border rounded border-gray-300  cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file"  name='file'/>
             <SubmitBtn />
             {state.status === "success" && <p className="text-green-500 text-center">{state.message}</p>}
             {state.status === "error" && <p className="text-red-500 text-center">{state.message}</p>}
