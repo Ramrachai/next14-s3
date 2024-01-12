@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
-import sharp from "sharp"
+
 
 const s3Client = new S3Client({
     region: process.env.NEXT_AWS_S3_REGION,
@@ -13,28 +13,21 @@ const s3Client = new S3Client({
 })
 
 async function uploadFiletoS3(file, fileName) {
-
     try {
-        const fileBuffer = await sharp(file)
-            .jpeg({ quality: 60 })
-            .resize(400, 400, { fit: "cover" })
-            .toBuffer()
-
-        console.log("resize success=", fileBuffer)
         const params = {
             Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME,
-            Body: fileBuffer,
-            Key: fileName
-        }
-        const command = new PutObjectCommand(params)
-        await s3Client.send(command)
-
+            Body: file,
+            Key: fileName,
+        };
+        const command = new PutObjectCommand(params);
+        await s3Client.send(command);
+        console.log("image uploaded")
     } catch (error) {
         console.error("Error during image processing:", error);
-        throw error; 
+        throw error;
     }
-
 }
+
 
 export async function uploadFile(prevState, formData) {
 
@@ -43,8 +36,8 @@ export async function uploadFile(prevState, formData) {
         if (file.size === 0) {
             return { status: "error", message: "Please select a file to upload" }
         }
-        if (file.size >= 5000000) {
-            return { status: "error", message: "Upload less than 5 Megabyte" }
+        if (file.size >= 1000000) {
+            return { status: "error", message: "Upload less than 1 Megabyte" }
         }
         if (file.type != "image/jpeg") {
             return { status: "error", message: "Only jpg/jpeg images are allowed" }
