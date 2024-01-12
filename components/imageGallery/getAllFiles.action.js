@@ -17,7 +17,6 @@ export async function getAllfilesFromS3() {
     }
     const command = new ListObjectsCommand(params)
     const data = await s3Client.send(command)
-    console.log("===get all files from s3===", data.Contents)
     revalidatePath("/")
     return {
         message: data.Contents,
